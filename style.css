@@ -5,9 +5,21 @@
     color: #fff;
     font-family: "Plain Light";
 }
+
 html,body{
     height: 100%;
     width: 100%;
+}
+
+#crsr{
+    height: 2.2vw;
+    width: 2.2vw;
+    border-radius: 50%;
+    border: 1px solid #f0ededb3;
+    position: fixed;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transform: translate(-50%,-50%);
 }
 
 #loader{
@@ -96,4 +108,48 @@ html,body{
     height: 100vh;
     width: 100%;
     background-color: #151515;
+}
+
+#page1 #nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.3vw 5.3vw;
+}
+#nav-part2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:4vw;
+}
+#nav-part2 h4{
+    font-weight: 300;
+    font-size: 2vw;
+}
+.hero{
+    /* background-color: red; */
+    width: 72%;
+    margin-left: 28%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+.hero:nth-child(2){
+    margin-top: 18vh;
+}
+.hero h1{
+    font-size: 7vw;
+    text-transform: uppercase;
+    line-height: 7vw;
+}
+.hero h2,.hero h3{
+    font-size: 7vw;
+    text-transform: uppercase;
+    line-height: 7vw;
+}
+.hero h2:hover{
+    -webkit-text-stroke: 1px #fff;
+    color: transparent;
+    font-weight: 500;
+    z-index: 999;
 }
