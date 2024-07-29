@@ -89,23 +89,71 @@ function loaderScreen(){
 }
 
 function cursorAnimation(){
-    document.addEventListener('mousemove',function(dets){
-        gsap.to("#crsr",{
-            left:dets.x,
-            top:dets.y
+    Shery.mouseFollower("#crsr",{
+        skew:true,
+        ease:"cubic-bezier(0.23,1,0.320,1)",
+        duration:1
+    })
+    // document.addEventListener('mousemove',function(dets){
+    //     gsap.to("#crsr",{
+    //         left:dets.x,
+    //         top:dets.y
+    //     })
+    // })
+    Shery.makeMagnet("#nav-part2 h4");
+    var video=document.querySelector("#video-container video");
+    var videoContainer=document.querySelector("#video-container");
+    videoContainer.addEventListener('mouseenter',function(){
+        videoContainer.addEventListener('mousemove',function(dets){
+            gsap.to(".mousefollwer",{
+                opacity:0
+            })
+            gsap.to("#video-cursor",{
+                y:dets.y -300,
+                left:dets.x -570
+            })
         })
     })
-    Shery.makeMagnet("#nav-part2 h4");
+    videoContainer.addEventListener('mouseleave',function(){
+        gsap.to(".mousefollwer",{
+            opacity:1
+        })
+        gsap.to("#video-cursor",{
+            left:"80%",
+            top:"-10%"
+        })
+    })
+    var flag=true;
+    videoContainer.addEventListener("click",function(){
+        if(flag===true){
+            video.play();
+            video.style.opacity=1;
+            document.querySelector("#video-cursor").innerHTML=`<i class="ri-pause-mini-fill"></i>`;
+            gsap.to("#video-cursor",{
+                scale:0.5
+            })
+            flag=false;
+        }
+        else{
+            video.pause();
+            video.style.opacity=0;
+            document.querySelector("#video-cursor").innerHTML=`<i class="ri-play-mini-fill"></i>`;
+            gsap.to("#video-cursor",{
+                scale:1
+            })
+            flag=true;
+        }
+    })
 }
-locomotiveAnimation();
-loaderScreen();
-// cursorAnimation();
 
 function sheryAnimation(){
     Shery.imageEffect(".image-div",{
         style:5,
-        debug:true,
+        debug:false,
         gooey:true
     })
 }
+locomotiveAnimation();
+loaderScreen();
+cursorAnimation();
 sheryAnimation();
