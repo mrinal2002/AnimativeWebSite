@@ -153,24 +153,43 @@ function sheryAnimation(){
         gooey:true
     })
 }
+
+function flagMousemovement(){
+    document.addEventListener("mousemove",function(dets){
+        gsap.to("#flag",{
+            x:dets.x,
+            y:dets.y
+        })
+    })
+    document.querySelector("#hero3").addEventListener("mouseenter",function(){
+        gsap.to("#flag",{
+            opacity:1
+        })
+    })
+    document.querySelector("#hero3").addEventListener("mouseleave",function(){
+        gsap.to("#flag",{
+            opacity:0
+        })
+    })
+}
+function textillateJs(){
+    document.querySelector("#footer h1").addEventListener("mouseenter",function(){
+        gsap.from("#footer h1",{
+            opacity:0,
+            delay:0.5,
+            duration:1,
+            onStart:function(){
+                $('#footer h1').textillate({ in: { effect: 'fadeIn' } });
+            }
+        })
+    })
+}
 locomotiveAnimation();
 loaderScreen();
 cursorAnimation();
 sheryAnimation();
+flagMousemovement();
+textillateJs();
 
-document.addEventListener("mousemove",function(dets){
-    gsap.to("#flag",{
-        x:dets.x,
-        y:dets.y
-    })
-})
-document.querySelector("#hero3").addEventListener("mouseenter",function(){
-    gsap.to("#flag",{
-        opacity:1
-    })
-})
-document.querySelector("#hero3").addEventListener("mouseleave",function(){
-    gsap.to("#flag",{
-        opacity:0
-    })
-})
+
+

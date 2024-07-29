@@ -549,6 +549,7 @@ body {
     /* background-color: blue; */
     text-transform: uppercase;
     position: relative;
+    opacity: 1;
 }
 
 #footer h1::before {
